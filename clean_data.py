@@ -8,6 +8,7 @@ def clean_ecommerce_data(filepath):
     """
     print(f"Cleaning e-commerce data from: {filepath}")
     df = pd.read_csv(filepath)
+
     # Apply filters (CORRECTED: EnterpriseSize is an integer 0)
     ecom_filtered = df[
         (df['Market'] == 'C00001') &          # Total market

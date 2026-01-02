@@ -1,44 +1,46 @@
+# Analysis of the Impact of World Crises on E-commerce
 
-# Анализ влияния мировых кризисов на электронную коммерцию
+This project is designed to process and combine various datasets to create a single, clean dataset. The final dataset allows for the analysis of how world crises, conflicts, and internet penetration levels affect e-commerce volumes across different countries and regions.
 
-Этот проект предназначен для обработки и объединения различных наборов данных с целью создания единого, чистого датасета. Финальный датасет позволяет анализировать, как мировые кризисы, конфликты и уровень проникновения интернета влияют на объемы электронной коммерции в разных странах и регионах.
+## Project Structure
 
-## Структура проекта
-
-Проект состоит из четырех основных скриптов, которые необходимо запускать последовательно. Каждый скрипт выполняет определенный этап обработки данных.
+The project consists of four main scripts that must be run sequentially. Each script performs a specific stage of data processing.
 
 ### 1. `1_data_preparation.py`
-- **Задача:** Первичная обработка и очистка сырых данных.
-- **Описание:** Скрипт читает исходные файлы (`.xlsx` и `.csv`), извлекает необходимую информацию (данные о конфликтах, использовании интернета, продажах в e-commerce), очищает ее и сохраняет в виде отдельных `.csv` файлов в директорию `processed_data/`.
+- **Task:** Initial processing and cleaning of raw data.
+- **Description:** This script reads the source files (`.xlsx` and `.csv`), extracts the necessary information (data on conflicts, internet usage, e-commerce sales), cleans it, and saves it into separate `.csv` files in the `processed_data/` directory.
 
 ### 2. `2_data_compilation.py`
-- **Задача:** Объединение обработанных данных в один файл.
-- **Описание:** Скрипт берет очищенные файлы из `processed_data/` и объединяет их в один общий датасет `compiled_data.csv` по ключам "страна/регион" и "год".
+- **Task:** Compiling the processed data into a single file.
+- **Description:** This script takes the cleaned files from `processed_data/` and merges them into a single comprehensive dataset, `compiled_data.csv`, using "country/region" and "year" as keys.
 
 ### 3. `3_feature_engineering.py`
-- **Задача:** Создание новых признаков (фич).
-- **Описание:** Скрипт использует `compiled_data.csv` для создания новых, более информативных признаков. Он обрабатывает пропущенные значения и добавляет флаги, указывающие на наличие конфликта в стране (`is_conflict_year`) и на периоды крупных мировых кризисов (`is_global_crisis_year`). Результат сохраняется в `featured_data.csv`.
+- **Task:** Creating new features.
+- **Description:** This script uses `compiled_data.csv` to create new, more informative features. It handles missing values and adds flags to indicate whether a country was in conflict (`is_conflict_year`) and to mark periods of major global crises (`is_global_crisis_year`). The result is saved in `featured_data.csv`.
 
 ### 4. `4_final_dataset.py`
-- **Задача:** Финальная очистка и форматирование датасета.
-- **Описание:** Скрипт проводит последнюю очистку данных, приводит типы столбцов к нужному формату, переименовывает их для большей ясности и сохраняет итоговый датасет в файл `final_dataset.csv`. Этот файл полностью готов для анализа и визуализации в Tableau.
+- **Task:** Final cleaning and formatting of the dataset.
+- **Description:** This script performs the final data cleaning, converts column types to the correct format, renames them for clarity, and saves the final dataset to `final_dataset.csv`. This file is fully prepared for analysis and visualization in Tableau.
 
-## Как запустить
+## How to Run
 
-Для получения финального датасета необходимо последовательно запустить все скрипты. Убедитесь, что у вас установлена библиотека `pandas`.
+To generate the final dataset, you need to run all the scripts sequentially. Make sure you have the required libraries installed.
 
 ```bash
-# 1. Подготовка данных
+# Install dependencies
+pip install -r requirements.txt
+
+# 1. Prepare Data
 python 1_data_preparation.py
 
-# 2. Компиляция данных
+# 2. Compile Data
 python 2_data_compilation.py
 
 # 3. Feature Engineering
 python 3_feature_engineering.py
 
-# 4. Создание финального датасета
+# 4. Create Final Dataset
 python 4_final_dataset.py
 ```
 
-После выполнения всех шагов вы получите файл `final_dataset.csv`, который можно использовать для дальнейшего анализа.
+After completing all steps, you will have the `final_dataset.csv` file, which can be used for further analysis.

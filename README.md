@@ -4,7 +4,7 @@ This project is designed to process and combine various datasets to create a sin
 
 ## Project Structure
 
-The project consists of five main scripts that must be run sequentially. Each script performs a specific stage of data processing.
+The project consists of four main scripts that must be run sequentially. Each script performs a specific stage of data processing.
 
 ### 1. `1_data_preparation.py`
 - **Task:** Initial processing and cleaning of raw data.
@@ -20,20 +20,15 @@ The project consists of five main scripts that must be run sequentially. Each sc
 
 ### 4. `4_final_dataset.py`
 - **Task:** Final cleaning and formatting of the dataset.
-- **Description:** This script performs advanced cleaning, including removing countries with no e-commerce data and filtering out statistical outliers. The final, clean dataset is saved to `final_dataset.csv`.
-
-### 5. `5_analysis_and_visualization.py`
-- **Task:** Performing analysis and generating visualizations.
-- **Description:** This script reads the final dataset and generates a correlation matrix and a box plot to analyze the relationship between key variables and the impact of conflicts on e-commerce during crises. The visualizations are saved in the `visualizations/` directory.
+- **Description:** This script performs the final data cleaning, converts column types to the correct format, renames them for clarity, and saves the final dataset to `final_dataset.csv`. This file is fully prepared for analysis and visualization in Tableau.
 
 ## How to Run
 
-To generate the final dataset and visualizations, you need to run all the scripts sequentially. Make sure you have the required libraries installed.
+To generate the final dataset, you need to run all the scripts sequentially. Make sure you have the required libraries installed.
 
 ```bash
 # Install dependencies
 pip install -r requirements.txt
-pip install matplotlib seaborn
 
 # 1. Prepare Data
 python 1_data_preparation.py
@@ -46,9 +41,6 @@ python 3_feature_engineering.py
 
 # 4. Create Final Dataset
 python 4_final_dataset.py
-
-# 5. Analyze and Visualize
-python 5_analysis_and_visualization.py
 ```
 
-After completing all steps, you will have the `final_dataset.csv` file and a `visualizations` directory containing the generated plots.
+After completing all steps, you will have the `final_dataset.csv` file, which can be used for further analysis.
